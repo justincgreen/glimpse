@@ -1,0 +1,25 @@
+.bill_list .bill_item {
+	display: block;
+	margin-bottom: 10px;
+	position: relative;
+	padding: 15px;
+	color: #495057;
+	border-radius: 10px;
+	/* transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out; */
+	transition: all .2s ease-in-out;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+}
+
+.bill_list .badge_bill_amount {
+	margin-left: 5px;
+}
+
+.bill_list .badge_due_date {
+	float: right;
+}
+
+/* .bill_list .paid {
+	border: 1px solid #03be9f;
+	box-shadow: 0 0 5px #03be9f;
+} */

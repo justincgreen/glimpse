@@ -1,0 +1,14 @@
+.bill_data_info {
+	//padding: 20px;
+}
+
+.bill_data_info .title {
+	padding-bottom: 5px;
+	//border-bottom: 2px solid var(--dark-grey-ui);
+}
+
+.bill_data_info .material_icons {
+	margin-left: 5px;
+	position: relative;
+	top: 4px;
+}

@@ -1,0 +1,22 @@
+.mainHeader {
+	padding: 5px 0;
+	background-color: var(--purple-ui);
+	color: #fff;
+}
+
+.mainHeader .logo {
+	margin: 0;
+	text-align: center;
+}
+
+.mainHeader .colorMode {
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 0;
+}
+
+.mainHeader .material_icons {
+	font-size: 30px;
+	/* transition: all .2s ease-in-out; */
+}

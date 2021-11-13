@@ -1,0 +1,11 @@
+.error_wrapper {
+	background-color: var(--orange-ui);
+	color: var(--dark-ui);
+	padding: 20px 10px;
+	text-align: center;
+	position: fixed;
+	bottom: -20%;
+	left: 0;
+	right: 0;
+	transition: all .4s ease-in-out;
+}

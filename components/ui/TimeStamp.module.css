@@ -1,0 +1,9 @@
+.current_month {
+	display: inline-block;
+	background-color: var(--orange-ui);
+	padding: 5px 15px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	color: var(--dark-ui);
+}
