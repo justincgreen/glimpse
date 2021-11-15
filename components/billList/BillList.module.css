@@ -19,7 +19,9 @@
 	float: right;
 }
 
-/* .bill_list .paid {
-	border: 1px solid #03be9f;
-	box-shadow: 0 0 5px #03be9f;
-} */
+
+@media(max-width: 767px) {
+	.bill_list .bill_list_heading {
+		margin-top: 20px;
+	}
+}

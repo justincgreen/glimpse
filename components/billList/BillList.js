@@ -14,22 +14,20 @@ const BillList = (props) => {
 	// Delete bill item
 	const deleteBill = (id) => {
 		const filterItems = billDataList.filter((element) => {
-			return element.id !== id;		  
-		})				
-		
+			return element.id !== id; 
+		})		
+				
 		setBillDataList(filterItems);
 		localStorage.setItem('billData', JSON.stringify(filterItems));		
 	}	
 	
 	// Delete all bill items
 	const deleteAllBills = () => {
-		
+		setBillDataList([]);
+		setBillsTotal(0);
+		localStorage.setItem('billData', '[]');
+		localStorage.setItem('billsTotal', '0');
 	}
-	
-	// Maybe add a boolean state that sets bill item div to full width and hide add bill form 
-	// would need to rearrange some things to make it work 
-	// if true add blah class else add blah class
-	// also would need a button or option to show hide the add bill form
 	
 	useEffect(() => {
 		// Hide paid button on bill items if paid class has already been applied previously
@@ -56,8 +54,13 @@ const BillList = (props) => {
 	
 	return (
 		<div className={`${styles.bill_list} bill_list`}>
-			<h3>Bill List</h3>
-			<h6>Total Amount: ${billsTotal}</h6>
+			<h3 className={styles.bill_list_heading}>Bill List</h3>
+			{
+				billDataList.length >= 1 && (
+					<h6>Total Amount: ${billsTotal}</h6>
+				)
+			}
+							
 			{
 				billDataList.length < 1 && (
 					<div>
@@ -113,7 +116,13 @@ const BillList = (props) => {
 										(e) => {
 											e.target.parentNode.parentNode.classList.add('remove-animation');
 											
-											setTimeout(() => {
+											// Subtract bills total amount from the removed bill item amount to get the updated amount
+											const updatedAmount = parseFloat(billsTotal) - parseFloat(bill.billAmount);
+											
+											setBillsTotal(updatedAmount);
+											localStorage.setItem('billsTotal', JSON.stringify(updatedAmount));
+											
+											setTimeout(() => {												
 												deleteBill(bill.id);
 											}, 300);
 										}
@@ -127,6 +136,13 @@ const BillList = (props) => {
 					})
 				)
 			}
+			{
+				billDataList.length > 1 && (
+					<div className="text-right">
+						<button className="btn btn-sm btn-danger" onClick={deleteAllBills}>Remove all bills</button>
+					</div>
+				)
+			}				
 		</div>
 	)
 }

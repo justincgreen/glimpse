@@ -13,6 +13,8 @@ const AddBillData = (props) => {
 		 setBillDueDate,
 		 paid,
 		 setPaid,
+		 billsTotal,
+		 setBillsTotal,
 		 error,
 		 setError
 	 } = props;
@@ -56,6 +58,13 @@ const AddBillData = (props) => {
 			setBillAmount(0);
 			setBillDueDate('');
 			setError('');
+			
+			// Update Bills total
+			const overallAmount = +billsTotal + +billAmount;
+			setBillsTotal(overallAmount);
+			
+			// save bills total state to local storage
+			localStorage.setItem('billsTotal', JSON.stringify(overallAmount));
 			
 			setTimeout(() => {				
 				const billElements = document.querySelectorAll('.bill_element');

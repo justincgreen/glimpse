@@ -14,7 +14,7 @@ export default function Home({user}) {
   const [billAmount, setBillAmount] = useState(0);
   const [billDueDate, setBillDueDate] = useState('');
   const [paid, setPaid] = useState(false);
-  const [billsTotal, setBillsTotals] = useState(0);
+  const [billsTotal, setBillsTotal] = useState(0);
   const [error, setError] = useState('');
   
   useEffect(() => {
@@ -27,6 +27,17 @@ export default function Home({user}) {
       }
     }
     
+    // add check for bills totals
+    const getLocalBillsTotal = () => {
+      const data = localStorage.getItem('billsTotal');
+      if(data) {
+        return JSON.parse(data);
+      }else {
+        return 0;
+      }
+    }
+    
+    setBillsTotal(getLocalBillsTotal)
     setBillDataList(getLocalBillData);
   }, []);
   
@@ -48,19 +59,21 @@ export default function Home({user}) {
           <div className="row">
             <div className="col-md-6">
               <AddBillData 
-              billDataList={billDataList} 
-              setBillDataList={setBillDataList} 
-              billDescription={billDescription}
-              setBillDescription={setBillDescription}
-              billAmount={billAmount}
-              setBillAmount={setBillAmount}
-              billDueDate={billDueDate}
-              setBillDueDate={setBillDueDate}
-              paid={paid}
-              setPaid={setPaid}
-              error={error}
-              setError={setError}
-            />
+                billDataList={billDataList} 
+                setBillDataList={setBillDataList} 
+                billDescription={billDescription}
+                setBillDescription={setBillDescription}
+                billAmount={billAmount}
+                setBillAmount={setBillAmount}
+                billDueDate={billDueDate}
+                setBillDueDate={setBillDueDate}
+                paid={paid}
+                setPaid={setPaid}
+                billsTotal={billsTotal}
+                setBillsTotal={setBillsTotal}
+                error={error}
+                setError={setError}
+              />
             </div>
             
             <div className="col-md-6">
@@ -70,7 +83,7 @@ export default function Home({user}) {
                 paid={paid}
                 setPaid={setPaid}
                 billsTotal={billsTotal}
-                setBillsTotals={setBillsTotals}
+                setBillsTotal={setBillsTotal}
               />
             </div>
           </div>                              
