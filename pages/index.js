@@ -15,6 +15,7 @@ export default function Home({user}) {
   const [billDueDate, setBillDueDate] = useState('');
   const [paid, setPaid] = useState(false);
   const [billsTotal, setBillsTotal] = useState(0);
+  const [formHidden, setFormHidden] = useState(false);
   const [error, setError] = useState('');
   
   useEffect(() => {
@@ -57,7 +58,7 @@ export default function Home({user}) {
       <div className="container">
         <div className="content-wrapper">
           <div className="row">
-            <div className="col-md-6">
+            <div className={formHidden === true ? 'hide-form' : 'col-md-6'}>
               <AddBillData 
                 billDataList={billDataList} 
                 setBillDataList={setBillDataList} 
@@ -71,12 +72,14 @@ export default function Home({user}) {
                 setPaid={setPaid}
                 billsTotal={billsTotal}
                 setBillsTotal={setBillsTotal}
+                formHidden={formHidden}
+                setFormHidden={setFormHidden}
                 error={error}
                 setError={setError}
               />
             </div>
             
-            <div className="col-md-6">
+            <div className={formHidden === true ? 'col-md-12' : 'col-md-6'}>
               <BillList 
                 billDataList={billDataList} 
                 setBillDataList={setBillDataList}
@@ -84,6 +87,8 @@ export default function Home({user}) {
                 setPaid={setPaid}
                 billsTotal={billsTotal}
                 setBillsTotal={setBillsTotal}
+                formHidden={formHidden}
+                setFormHidden={setFormHidden}
               />
             </div>
           </div>                              

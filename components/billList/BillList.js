@@ -8,7 +8,9 @@ const BillList = (props) => {
 		paid,
 		setPaid,
 		billsTotal,
-		setBillsTotal
+		setBillsTotal,
+		formHidden,
+		setFormHidden
 	} = props;
 	
 	// Delete bill item
@@ -27,6 +29,18 @@ const BillList = (props) => {
 		setBillsTotal(0);
 		localStorage.setItem('billData', '[]');
 		localStorage.setItem('billsTotal', '0');
+	}
+	
+	// Show form
+	const showForm = () => {
+		setFormHidden(!formHidden);
+		
+		// scroll back to top - behavior for mobile
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		});
 	}
 	
 	useEffect(() => {
@@ -57,7 +71,7 @@ const BillList = (props) => {
 			<h3 className={styles.bill_list_heading}>Bill List</h3>
 			{
 				billDataList.length >= 1 && (
-					<h6>Total Amount: ${billsTotal}</h6>
+					<h6>Total Amount: ${billsTotal.toFixed(2)}</h6>
 				)
 			}
 							
@@ -134,6 +148,13 @@ const BillList = (props) => {
 							</div>
 						)
 					})
+				)
+			}
+			{
+				formHidden === true && (
+					<div className="float-left">
+						<button className="btn btn-sm btn-purple" onClick={showForm}>Show form</button>
+					</div>				
 				)
 			}
 			{

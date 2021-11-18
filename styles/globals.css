@@ -42,6 +42,17 @@ body {
   background-color: var(--dark-purple-ui);
 }
 
+.btn-hide-form {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+}
+
+.btn-text {
+  position: relative;
+  top: -3px;
+}
+
 .badge-orange {
   background-color: var(--orange-ui);
 }
@@ -63,6 +74,11 @@ label {
 
 .form-group {
   margin-bottom: 10px;
+}
+
+/* Classes for index.js */
+.hide-form {
+  display: none;
 }
 
 /*  Bill List Component  */

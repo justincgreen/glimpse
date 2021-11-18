@@ -15,6 +15,8 @@ const AddBillData = (props) => {
 		 setPaid,
 		 billsTotal,
 		 setBillsTotal,
+		 formHidden,
+		 setFormHidden,
 		 error,
 		 setError
 	 } = props;
@@ -78,8 +80,12 @@ const AddBillData = (props) => {
 		}				
 	}
 	
+	const handleHideForm = () => {
+		setFormHidden(!formHidden);
+	}
+	
 	return (
-		<div className={styles.bill_data_info}>						
+		<div className={`${styles.bill_data_info} relative`}>						
 			<div className="shadow p-4 card_wrapper">
 				<TimeStamp />
 				<h3 className={styles.title}>Add bill information</h3>
@@ -118,13 +124,23 @@ const AddBillData = (props) => {
 						/>
 					</div>
 					
-					<button className="btn btn-purple mt-2">
-						Add bill 
+					<button className="btn btn-sm btn-purple mt-2">
+						<span className="btn-text">Add bill</span>
 						<span className={`material-icons ${styles.material_icons}`}>
 							add_circle_outline
 						</span>
-					</button>					
+					</button>										
 				</form>
+				
+				<button 
+					className="btn btn-sm btn-purple btn-hide-form"
+					onClick={handleHideForm}
+				>
+					<span className="btn-text">Hide form</span>
+					<span className={`material-icons ${styles.material_icons}`}>
+						block
+					</span>
+				</button>	
 			</div>
 		</div>
 	)
